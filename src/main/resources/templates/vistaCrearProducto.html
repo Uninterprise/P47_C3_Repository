@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grupo 4 P47_C3</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" , href="css/styles.css">
+</head>
+
+<a href="vistaBienvenido.html" style="text-decoration: none; color: #fff;">Home</a>
+
+<body>
+    <main class="contenedor seccion contenido-centrado">
+        <h1>Forma para creación de Productos</h1>
+        <form th:action="@{/crear/producto}" th:object="${producto}" method="post">
+            <fieldset style="text-align: center;">
+                <label> Código del Producto </label>
+                <input id="codigoproducto" type="text" th:field="*{codProducto}" />
+                <label> Nombre del Producto </label>
+                <input id="nombreproducto" type="text" th:field="*{nombreProducto}" /> <br/><br/>
+                <label> Descripción Producto</label>
+                <input id="descripcionproducto" type="text" th:field="*{descripcionProducto}" />
+                <label> Precio del Producto ($)</label>
+                <input id="precioproducto" type="text" th:field="*{precioProducto}" />
+                <br/> <br/>
+                <button type="submit" class="boton boton-verde">Agregar Producto</button>
+            </fieldset>
+        </form>
+    </main>
+</body>
+
+</html>

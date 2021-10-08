@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Listado Facturas</title>
+    <meta charset="UTF-8"> </meta>
+    <title>Listado Facturas</title>
+    <link rel="stylesheet" , href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" />
+
+</head>
+<a href="vistaCrearFactura.html" style="text-decoration: none; color: #fff; font-size: 20px;">Facturas</a>
+
+<body>
+    <!--<table>
+            <caption>Lista de Facturas</caption>
+            <tr>
+                <th> No.Fac   </th>
+                <th> Cod.Prod </th>
+                <th> Fecha    </th>
+                <th> Cod.Vend </th>
+            </tr>            
+            <tr th:each="factura: ${facturas}">
+                <td th:text="${factura.numeroFactura}" />
+                <td th:text="${factura.producto.codProducto}" />
+                <td th:text="${factura.fechaVenta}" />
+                <td th:text="${factura.vendedor.codVendedor}" />
+            </tr>
+        </table>-->
+    <div class="container mt-4">
+        <h2 style="color: #ffffff; font-size: 30px;">Lista de Facturas</h2>
+        <table class="table" style="color: #ffffff; font-size: 15px;">
+            <thead>
+                <tr>
+                    <th>No.Fac </th>
+                    <th>Cod.Prod</th>
+                    <th>Fecha </th>
+                    <th>Cod.Vend</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="factura: ${facturas}">
+                    <td th:text="${factura.numeroFactura}"></td>
+                    <td th:text="${factura.producto.codProducto}"></td>
+                    <td th:text="${factura.fechaVenta}"></td>
+                    <td th:text="${factura.vendedor.codVendedor}"></td>
+                    <td>
+                        <a class="btn btn-warning">Editar</a>
+                        <a class="btn btn-danger">Eliminar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8"> </meta>
+    <link rel="stylesheet" , href="css/styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+    <title>Consultar Vendedores</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" />
+</head>
+<a href="vistaCrearVendedor.html" style="text-decoration: none; color: #fff; font-size: 20px;">Vendedor</a>
+
+<body>
+    <!--<h2>Listado de Vendedores</h2>
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col"><strong>Código</strong></div>
+                    <div class="col"><strong>Nombre Vendedor</strong></div>
+                </div>
+            </div>
+        </div>
+        <div class="card" th:each="vendedor: ${vendedores}">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col" th:text="${vendedor.codVendedor}"></div>
+                    <div class="col" th:text="${vendedor.nombreVendedor}"></div>
+                </div>
+            </div>
+        </div>-->
+    <div class="container mt-4">
+        <h2 style="color: #ffffff; font-size: 30px;">Lista de Vendedores</h2>
+        <a href="/crear/vendedor" class="btn btn-warning">Nuevo</a>
+        <table class="table" style="color: #ffffff; font-size: 15px;">
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Nombre</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="vendedor: ${vendedores}">
+                    <td th:text="${vendedor.codVendedor}"></td>
+                    <td th:text="${vendedor.nombreVendedor}"></td>
+                    <td>
+                        <a class="btn btn-warning">Editar</a>
+                        <a class="btn btn-danger">Eliminar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

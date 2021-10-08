@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grupo 4 P47_C3</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" , href="css/styles.css">
+
+</head>
+<a href="vistaBienvenido.html" style="text-decoration: none; color: #fff;">Home</a>
+
+<body>
+    <!--<form th:action = "@{/crear/vendedor}" th:object="${vendedor}" method="post">
+            <label> Código del Vendedor</label>
+            <input id = "codigovendedor" type="text" th:field ="*{codVendedor}"/>
+            <label> Nombre del Vendedor</label>
+            <input id = "nombrevendedor" type="text" th:field = "*{nombreVendedor}"/> 
+            <button type = "submit">Agregar Vendedor</button>
+        </form>-->
+    <main class="contenedor seccion contenido-centrado">
+        <form th:action="@{/crear/vendedor}" th:object="${vendedor}" method="post">
+            <h2>Formulario Nuevo Vendedor</h2>
+            <fieldset style="text-align: center;">
+                <div class="container mt-4">
+                    <div class="col-sm-6">
+                        <div class="card">
+                            <div class="card-header">
+
+                            </div>
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label>Codigo</label>
+                                    <input id="codigovendedor" type="text" th:field="*{codVendedor}" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Nombre</label>
+                                    <input id="nombrevendedor" type="text" th:field="*{nombreVendedor}" />
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <button type="submit" class="boton boton-verde">Agregar Vendedores</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Listado Facturas</title>
+    <meta charset="UTF-8"> </meta>
+    <title>Listado Facturas</title>
+    <link rel="stylesheet" , href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" />
+</head>
+
+<a href="vistaCrearProducto.html" style="text-decoration: none; color: #fff; font-size: 20px;">Productos</a>
+
+<body>
+    <!--<div th:text="${productos}"></div>-->
+    <!--<table>
+            <caption>Lista de Productos</caption>
+            <tr>
+                <th> Código      </th>
+                <th> Nombre      </th>
+                <th> Descripción </th>
+                <th> Precio      </th>
+            </tr>
+            <tr th:each="producto: ${productos}">
+                <td th:text="${producto.codProducto}" />
+                <td th:text="${producto.nombreProducto}" />
+                <td th:text="${producto.descripcionProducto}" />
+                <td th:text="${producto.precioProducto}" />
+            </tr>
+        </table>-->
+    <!--<h2>Listado de Productos</h2>
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col"><strong>Código</strong></div>
+                    <div class="col"><strong>Nombre</strong></div>
+                    <div class="col"><strong>Descripcion</strong></div>
+                    <div class="col"><strong>Precio</strong></div>
+                    <div class="col"><strong>Acciones</strong></div>
+                </div>
+            </div>
+        </div>
+        <div class="card" th:each="producto: ${productos}">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col" th:text="${producto.codProducto}"></div>
+                    <div class="col" th:text="${producto.nombreProducto}"></div>
+                    <div class="col" th:text="${producto.descripcionProducto}"></div>
+                    <div class="col" th:text="${producto.precioProducto}"></div>
+                    <a class="btn btn-warning">Editar</a>
+                    <a class="btn btn-danger">Eliminar</a>
+                </div>
+            </div>
+        </div>-->
+    <div class="container mt-4">
+        <h2 style="color: #ffffff; font-size: 30px;">Lista de Productos</h2>
+        <table class="table" style="color: #ffffff; font-size: 15px;">
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Nombre</th>
+                    <th>Descripcion</th>
+                    <th>Precio</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="producto: ${productos}">
+                    <td th:text="${producto.codProducto}"></td>
+                    <td th:text="${producto.nombreProducto}"></td>
+                    <td th:text="${producto.descripcionProducto}"></td>
+                    <td th:text="${producto.precioProducto}"></td>
+                    <td>
+                        <a class="btn btn-warning">Editar</a>
+                        <a class="btn btn-danger">Eliminar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
