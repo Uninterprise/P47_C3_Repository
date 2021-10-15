@@ -2,60 +2,60 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
-<head>
-    <meta charset="UTF-8"> </meta>
-    <!-- <link rel="stylesheet" , href="styles.css"> -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
-    <title>Consultar Vendedores</title>
-    <link rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" />
-</head>
+    <head>
+        <meta charset="UTF-8"> </meta>
+        <!-- <link rel="stylesheet" , href="styles.css"> -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+        <title>Consultar Vendedores</title>
+        <link rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" />
+    </head>
     <a href="/bienvenido" class="btn btn"><h6>Home</h6></a>
     <a href="/crear/vendedor" class="btn btn"><h6>Nuevo</h6></a>
 
-<body>
-    <!--<h2>Listado de Vendedores</h2>
-        <div class="card">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col"><strong>Código</strong></div>
-                    <div class="col"><strong>Nombre Vendedor</strong></div>
+    <body>
+        <!--<h2>Listado de Vendedores</h2>
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col"><strong>Código</strong></div>
+                        <div class="col"><strong>Nombre Vendedor</strong></div>
+                    </div>
                 </div>
             </div>
+            <div class="card" th:each="vendedor: ${vendedores}">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col" th:text="${vendedor.codVendedor}"></div>
+                        <div class="col" th:text="${vendedor.nombreVendedor}"></div>
+                    </div>
+                </div>
+            </div>-->
+        <div class="container mt-4">
+            <h2 style="color: #000000; font-size: 30px;">Lista de Vendedores</h2>
+            <table class="table" style="color: #000000; font-size: 20px;">
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Nombre</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="vendedor: ${vendedores}">
+                        <td th:text="${vendedor.codVendedor}"></td>
+                        <td th:text="${vendedor.nombreVendedor}"></td>
+                        <td>
+                            <a style="color: #000000" class="btn btn"
+                               th href="/editar/vendedor"><h5>Editar</h5></a>
+                            <a style="color: #000000" class="btn btn"
+                               th:href="@{/eliminar/}+${vendedor.codVendedor}"  th:object="${vendedor}"><h5>Eliminar</h5></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-        <div class="card" th:each="vendedor: ${vendedores}">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col" th:text="${vendedor.codVendedor}"></div>
-                    <div class="col" th:text="${vendedor.nombreVendedor}"></div>
-                </div>
-            </div>
-        </div>-->
-    <div class="container mt-4">
-        <h2 style="color: #000000; font-size: 30px;">Lista de Vendedores</h2>
-        <table class="table" style="color: #000000; font-size: 20px;">
-            <thead>
-                <tr>
-                    <th>Código</th>
-                    <th>Nombre</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="vendedor: ${vendedores}">
-                    <td th:text="${vendedor.codVendedor}"></td>
-                    <td th:text="${vendedor.nombreVendedor}"></td>
-                    <td>
-                        <a style="color: #000000" class="btn btn"
-                           th href="/editar/vendedor"><h5>Editar</h5></a>
-                        <a style="color: #000000" class="btn btn"
-                           th href="/vendedores"><h5>Eliminar</h5></a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
-</body>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    </body>
 
 </html>
