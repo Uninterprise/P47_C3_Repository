@@ -3,19 +3,19 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grupo 4 P47_C3</title>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" , href="css/styles.css">
+    
+    <title >Crear producto</title>
+    <meta charset="UTF-8"> </meta>
+    
+    <link rel="stylesheet"  href="/styles.css" />
+    
 </head>
 
-<a href="vistaBienvenido.html" style="text-decoration: none; color: #fff;">Home</a>
+<a href="/bienvenido" class="btn btn" style="color: #ffffff" ><h5>Home</h5></a>
 
 <body>
-    <main class="contenedor seccion contenido-centrado">
-        <h1>Forma para creación de Productos</h1>
+    <main>
+       <h4 style="text-align: center;">Forma para creación de Productos</h4> 
         <form th:action="@{/crear/producto}" th:object="${producto}" method="post">
             <fieldset style="text-align: center;">
                 <label> Código del Producto </label>

@@ -51,7 +51,7 @@ public class ControladorProducto {
        if (productoGuardado == null){
            return new RedirectView("/crear/producto/",true);
        }
-       return new RedirectView("/productos/"+productoGuardado.getCodProducto(),true);
+       return new RedirectView("/productos",true);
     }    
     
 }
