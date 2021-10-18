@@ -11,7 +11,7 @@
     <link rel="stylesheet" , href="css/styles.css">
 </head>
 
-<a href="vistaBienvenido.html" style="text-decoration: none; color: #fff;">Home</a>
+<a href="/bienvenido" style="text-decoration: none; color: #fff;">Home</a>
 
 <body>
     <main class="contenedor seccion contenido-centrado">
@@ -21,11 +21,27 @@
                 <label> Número de factura:</label>
                 <input id="numerofactura" type="text" th:field="*{numeroFactura}" />
                 <label> Código del Producto:</label>
-                <input id="codigoproducto" type="text" th:field="*{codigoProducto}" />
+                <!--input id="codigoproducto" type="text" th:field="*{producto.codProducto}" /-->
+                
+                <select th:field="*{producto}" class="form-control form-control-sm col-md-6" id="vendedor">
+                    <option th:each="producto:${productos}"
+                            th:value="${producto.codProducto}"
+                            th:text="${producto.nombreProducto}"
+                            />    
+                </select>
+                
                 <label> Fecha de venta:</label>
                 <input id="fecha" type="date" th:field="*{fechaVenta}" /> <br/><br/>
                 <label> Código del Vendedor:</label>
-                <input id="codigovendedor" type="text" th:field="*{codigoVendedor}" />
+                <!--input id="codigovendedor" type="text" th:field="*{vendedor.codVendedor}" /-->
+                
+                <select th:field="*{vendedor}" class="form-control form-control-sm col-md-6" id="vendedor">
+                    <option th:each="vendedor:${vendedores}"
+                            th:value="${vendedor.codVendedor}"
+                            th:text="${vendedor.nombreVendedor}"
+                            />    
+                </select>
+                
                 <label> Precio del Producto($):</label>
                 <input id="valorfactura" type="text" th:field="*{valorFactura}" />
                 <br/> <br/>
