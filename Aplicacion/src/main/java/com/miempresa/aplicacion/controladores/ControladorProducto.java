@@ -4,6 +4,7 @@ import com.miempresa.aplicacion.modelos.Producto;
 import com.miempresa.aplicacion.modelos.RepositorioProducto;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 
 import lombok.RequiredArgsConstructor;
@@ -51,7 +52,23 @@ public class ControladorProducto {
        if (productoGuardado == null){
            return new RedirectView("/crear/producto/",true);
        }
-       return new RedirectView("/productos",true);
-    }    
+       return new RedirectView("/productos/"+productoGuardado.getCodProducto(),true);
+    }  
+    
+    /*@GetMapping("/editar/{id}")
+    public String editar(@PathVariable int id,Model model){
+        Optional<Persona> persona=service.listarId(id);
+        model.addAttribute("persona", persona);
+        return "form";
+    }
+   */
+    @GetMapping("/editar/{codProducto}")
+    public String editarProducto(@PathVariable String codProducto,Model model) {
+        Producto productoSeleccionado = repositorioProducto.findByCodProducto(codProducto);
+        model.addAttribute("producto", productoSeleccionado);
+//       model.addAttribute("producto", new Producto());
+        return "vistaCrearProducto";
+    }
+
     
 }

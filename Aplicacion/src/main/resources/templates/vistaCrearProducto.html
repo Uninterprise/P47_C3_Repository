@@ -2,35 +2,36 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
-<head>
-    
-    <title >Crear producto</title>
-    <meta charset="UTF-8"> </meta>
-    
-    <link rel="stylesheet"  href="/styles.css" />
-    
-</head>
+    <head>
 
-<a href="/bienvenido" class="btn" style="color: #ffffff;" ><h5>Home</h5></a>
+        <title >Crear producto</title>
+        <meta charset="UTF-8"> </meta>
 
-<body>
-    <main>
-       <h4 style="text-align: center;">Forma para creación de Productos</h4> 
-        <form th:action="@{/crear/producto}" th:object="${producto}" method="post">
-            <fieldset style="text-align: center;">
-                <label> Código del Producto </label>
-                <input id="codigoproducto" type="text" th:field="*{codProducto}" />
-                <label> Nombre del Producto </label>
-                <input id="nombreproducto" type="text" th:field="*{nombreProducto}" /> <br/><br/>
-                <label> Descripción Producto</label>
-                <input id="descripcionproducto" type="text" th:field="*{descripcionProducto}" />
-                <label> Precio del Producto ($)</label>
-                <input id="precioproducto" type="text" th:field="*{precioProducto}" />
-                <br/> <br/>
-                <button type="submit" class="boton boton-verde">Agregar Producto</button>
-            </fieldset>
-        </form>
-    </main>
-</body>
+        <link rel="stylesheet"  href="/styles.css" />
+
+    </head>
+
+    <body>
+        <button type="submit" class="boton boton-azul d-block"><a href="/bienvenido">Home</a></button>
+        <button type="submit" class="boton boton-azul d-block"><a href="/productos">Productos</a></button>
+
+        <main>
+            <h4 style="text-align: center;">Forma para creación de Productos</h4> 
+            <form th:action="@{/crear/producto}" th:object="${producto}" method="post">
+                <fieldset style="text-align: center;">
+                    <label> Código del Producto </label>
+                    <input id="codigoproducto" type="text" th:field="*{codProducto}" />
+                    <label> Nombre del Producto </label>
+                    <input id="nombreproducto" type="text" th:field="*{nombreProducto}" /> <br/><br/>
+                    <label> Descripción Producto</label>
+                    <input id="descripcionproducto" type="text" th:field="*{descripcionProducto}" />
+                    <label> Precio del Producto ($)</label>
+                    <input id="precioproducto" type="text" th:field="*{precioProducto}" />
+                    <br/> <br/>
+                    <button type="submit" class="boton boton-verde">Agregar Producto</button>
+                </fieldset>
+            </form>
+        </main>
+    </body>
 
 </html>

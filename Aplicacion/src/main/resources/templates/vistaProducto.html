@@ -10,7 +10,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" />
 </head>
 
-
+    <a href="/bienvenido" class="btn btn"><h6>Home</h6></a>
+    <a href="/crear/producto" class="btn btn"><h6>Nuevo</h6></a>
 
 <body>
     <a href="/bienvenido" class="btn" style="color: #ffffff"><h2>Home</h2></a>
@@ -35,7 +36,7 @@
                     <td th:text="${producto.descripcionProducto}"></td>
                     <td th:text="${producto.precioProducto}"></td>
                     <td>
-                        <a class="btn btn-warning">Editar</a>
+                        <a th:href="@{/editar/}+${producto.codProducto}" class="btn btn-warning">Editar</a>
                         <a class="btn btn-danger">Eliminar</a>
                     </td>
                 </tr>
