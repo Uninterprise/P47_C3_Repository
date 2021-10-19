@@ -49,20 +49,25 @@ public class ControladorVendedor {
             return new RedirectView("/crear/vendedor/", true);
         }
 //     return new RedirectView("/vendedores", true);
-        return new RedirectView("/vendedores/" + vendedorGuardado.getCodVendedor(), true);
+        return new RedirectView("/vendedores", true);
     }
 
-    @GetMapping("/editar/vendedor")
-    public String editarVendedor(Model model) {
-
-        model.addAttribute("vendedor", new Vendedor());
+    @GetMapping("/editarVend/{codVendedor}")
+    public String editarVendedor(Model model, @PathVariable String codVendedor) {
+        Vendedor vendedores = repositorioVendedor.findByCodVendedor(codVendedor);
+        repositorioVendedor.save(vendedores);
+        model.addAttribute("vendedor", vendedores);
         return "vistaCrearVendedor";
     }
 
-    @GetMapping("/eliminar/{codigoVendedor}")
-    public String eliminarVendedor(Model model, @PathVariable String codigoVendedor) {
-        repositorioVendedor.deleteById(codigoVendedor);
-        return "vistaVendedor";
+    @GetMapping("/eliminar/{codVendedor}")
+    public String eliminarVendedor(Model model, @PathVariable String codVendedor) {
+        try {
+            repositorioVendedor.deleteById(codVendedor);
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+        return "redirect:/vendedores";
     }
 
 }

@@ -9,6 +9,7 @@ import com.miempresa.aplicacion.modelos.RepositorioVendedor;
 import com.miempresa.aplicacion.modelos.Vendedor;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 //import java.sql.Date;
 //import javax.persistence.GeneratedValue;
 //import javax.persistence.GenerationType;
@@ -36,7 +37,6 @@ public class ControladorFactura {
     public String getTodasLasFacturas(Model model) {
         Iterable<Factura> facturas = repositorioFactura.findAll();
         model.addAttribute("facturas", facturas);
-
         return "vistaFactura";
     }
 
@@ -51,46 +51,51 @@ public class ControladorFactura {
 
     @GetMapping("/crear/factura") //path del controlador
     public String crearFactura(Model model) {
-        Factura fact = new Factura();
-        model.addAttribute("factura", fact);
 
         Iterable<Vendedor> vendedores = repositorioVendedor.findAll();
         model.addAttribute("vendedores", vendedores);
 
         Iterable<Producto> productos = repositorioProducto.findAll();
         model.addAttribute("productos", productos);
+
+        Factura fact = new Factura();
+        model.addAttribute("factura", fact);
 
         return "vistaCrearFactura";
     }
 
     @PostMapping("/crear/factura")
-    public RedirectView procesarProducto(@ModelAttribute Factura factura) {
- 
+    public RedirectView procesarFatura(@ModelAttribute Factura factura) {
+
         Factura facturaGuardada = repositorioFactura.save(factura);
         if (facturaGuardada == null) {
             return new RedirectView("/crear/factura/", true);
         }
-        return new RedirectView("/facturas/" + facturaGuardada.getNumeroFactura(), true);
+        return new RedirectView("/facturas", true);
 
     }
 
     @GetMapping("/editarFact/{numeroFactura}")
     public String editarFactura(@PathVariable String numeroFactura, Model model) {
+
         Factura facturaSeleccionado = repositorioFactura.findByNumeroFactura(numeroFactura);
+        System.out.println(" " + numeroFactura);
+
         model.addAttribute("factura", facturaSeleccionado);
 
+        System.out.println("fa " + facturaSeleccionado.getIdVenta() + " " + facturaSeleccionado.getNumeroFactura());
         Iterable<Vendedor> vendedores = repositorioVendedor.findAll();
         model.addAttribute("vendedores", vendedores);
 
         Iterable<Producto> productos = repositorioProducto.findAll();
         model.addAttribute("productos", productos);
-
+        //System.out.println("id "+facturaSeleccionado.getIdVenta());
         return "vistaCrearFactura";
     }
-    
-        @GetMapping("/eliminarFact/{idVenta}")
+
+    @GetMapping("/eliminarFact/{idVenta}")
     public String eliminarFactura(Model model, @PathVariable Long idVenta) {
         repositorioFactura.deleteById(idVenta);
-        return "vistaFactura";
+        return "redirect:/facturas";
     }
 }

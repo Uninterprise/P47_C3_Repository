@@ -34,6 +34,7 @@
             <table class="table" style="color: #ffffff; font-size: 15px;">
                 <thead>
                     <tr>
+                        <th>ID </th>
                         <th>No.Fac </th>
                         <th>Cod.Prod</th>
                         <th>Fecha </th>
@@ -43,6 +44,7 @@
                 </thead>
                 <tbody>
                     <tr th:each="factura: ${facturas}">
+                        <td th:text="${factura.idVenta}"></td>
                         <td th:text="${factura.numeroFactura}"></td>
                         <td th:text="${factura.producto.codProducto}"></td>
                         <td th:text="${factura.fechaVenta}"></td>

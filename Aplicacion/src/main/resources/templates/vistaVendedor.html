@@ -45,8 +45,7 @@
                         <td th:text="${vendedor.codVendedor}"></td>
                         <td th:text="${vendedor.nombreVendedor}"></td>
                         <td>
-                            <a style="color: #000000" class="btn btn"
-                               th href="/editar/vendedor"><h5>Editar</h5></a>
+                            <a th:href="@{/editarVend/}+${vendedor.codVendedor}" class="btn btn-warning">Editar</a>
                             <a style="color: #000000" class="btn btn" th:href="@{/eliminar/}+${vendedor.codVendedor}"  th:object="${vendedor}"><h5>Eliminar</h5></a>
                         </td>
                     </tr>

@@ -52,7 +52,7 @@ public class ControladorProducto {
        if (productoGuardado == null){
            return new RedirectView("/crear/producto/",true);
        }
-       return new RedirectView("/productos/"+productoGuardado.getCodProducto(),true);
+       return new RedirectView("/productos",true);
     }  
     
     /*@GetMapping("/editar/{id}")
@@ -68,6 +68,12 @@ public class ControladorProducto {
         model.addAttribute("producto", productoSeleccionado);
 //       model.addAttribute("producto", new Producto());
         return "vistaCrearProducto";
+    }
+   
+    @GetMapping("/eliminarProd/{codProducto}")
+    public String eliminarProducto(@PathVariable String codProducto,Model model) {
+            repositorioProducto.deleteById(codProducto);
+        return "redirect:/productos";
     }
 
     
