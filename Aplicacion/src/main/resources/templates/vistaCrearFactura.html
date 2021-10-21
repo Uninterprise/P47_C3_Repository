@@ -24,11 +24,11 @@
             <form th:action="@{/crear/factura}" th:object="${factura}" method="post" class="contacto">
                 <fieldset>
                     <label> Número de factura:</label>
-                    <input id="numerofactura" type="text" th:field="*{numeroFactura}" />
+                    <input id="numerofactura" type="text" th:field="*{numeroFactura}" required/>
                     <label> Código del Producto:</label>
                     <!--input id="codigoproducto" type="text" th:field="*{producto.codProducto}" /-->
 
-                    <select th:field="*{producto}" class="form-control form-control-sm col-md-6" id="vendedor">
+                    <select th:field="*{producto}" class="form-control form-control-sm col-md-6" id="vendedor" required>
                         <option th:each="producto:${productos}"
                                 th:value="${producto.codProducto}"
                                 th:text="${producto.nombreProducto}"
@@ -36,11 +36,11 @@
                     </select>
 
                     <label> Fecha de venta:</label>
-                    <input id="fecha" type="date" th:field="*{fechaVenta}" /> 
+                    <input id="fecha" type="date" th:field="*{fechaVenta}" required/> 
                     <label> Código del Vendedor:</label>
                     <!--input id="codigovendedor" type="text" th:field="*{vendedor.codVendedor}" /-->
 
-                    <select th:field="*{vendedor}" class="form-control form-control-sm col-md-6" id="vendedor">
+                    <select th:field="*{vendedor}" class="form-control form-control-sm col-md-6" id="vendedor" required>
                         <option th:each="vendedor:${vendedores}"
                                 th:value="${vendedor.codVendedor}"
                                 th:text="${vendedor.nombreVendedor}"
@@ -48,7 +48,7 @@
                     </select>
 
                     <label> Precio del Producto($):</label>
-                    <input id="valorfactura" type="text" th:field="*{valorFactura}" />   
+                    <input id="valorfactura" type="text" th:field="*{valorFactura}" required />   
                     <button type="submit" class="boton boton-submit">Agregar Factura</button>
 
                 </fieldset>
@@ -57,7 +57,7 @@
           <div id="miModal" class="modal">
             <div class="modal-contenido">
                 <a href="#">X</a>
-                <h2>Goog job!</h2>
+                <h2>Good job!</h2>
                 <p>Solicitud realizada con exito</p>
             </div>  
         </div>
@@ -66,7 +66,7 @@
             <div class="modal-contenido error">
                 <a href="#">X</a>
                 <h2>ERROR</h2>
-                <p>No se pudo realizar la solicitud</p>
+                <p>No se pudo realizar la solicitud, hay campos vacios</p>
             </div>  
         </div>
     </body>

@@ -22,13 +22,13 @@
             <form th:action="@{/crear/producto}" th:object="${producto}" method="post">
                 <fieldset>
                     <label> Código del Producto </label>
-                    <input id="codigoproducto" type="text" th:field="*{codProducto}" />
+                    <input id="codigoproducto" type="text" th:field="*{codProducto}" required/>
                     <label> Nombre del Producto </label>
-                    <input id="nombreproducto" type="text" th:field="*{nombreProducto}" />
+                    <input id="nombreproducto" type="text" th:field="*{nombreProducto}" required/>
                     <label> Descripción Producto</label>
-                    <input id="descripcionproducto" type="text" th:field="*{descripcionProducto}" />
+                    <input id="descripcionproducto" type="text" th:field="*{descripcionProducto}" required/>
                     <label> Precio del Producto ($)</label>
-                    <input id="precioproducto" type="text" th:field="*{precioProducto}" />
+                    <input id="precioproducto" type="text" th:field="*{precioProducto}" required/>
                     <button type="submit" class="boton boton-submit">Agregar Producto</button>
 
                 </fieldset>
@@ -38,7 +38,7 @@
           <div id="miModal" class="modal">
             <div class="modal-contenido">
                 <a href="#">X</a>
-                <h2>Goog job!</h2>
+                <h2>Good job!</h2>
                 <p>Solicitud realizada con exito</p>
             </div>  
         </div>

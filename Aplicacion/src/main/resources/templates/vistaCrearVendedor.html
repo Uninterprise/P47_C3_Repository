@@ -24,9 +24,9 @@
                 <h2>CREAR VENDEDOR</h2>
                 <fieldset>
                     <label>Codigo</label>
-                    <input id="codigovendedor" type="text" th:field="*{codVendedor}" />
+                    <input id="codigovendedor" type="text" th:field="*{codVendedor}" required/>
                     <label>Nombre</label>
-                    <input id="nombrevendedor" type="text" th:field="*{nombreVendedor}" />
+                    <input id="nombrevendedor" type="text" th:field="*{nombreVendedor}" required/>
                     <button type="submit" class="boton boton-submit">Agregar Vendedores</button>
 
                 </fieldset>   
@@ -35,7 +35,7 @@
           <div id="miModal" class="modal">
             <div class="modal-contenido">
                 <a href="#">X</a>
-                <h2>Goog job!</h2>
+                <h2>Good job!</h2>
                 <p>Solicitud realizada con exito</p>
             </div>  
         </div>
@@ -44,7 +44,7 @@
             <div class="modal-contenido error">
                 <a href="#">X</a>
                 <h2>ERROR</h2>
-                <p>No se pudo realizar la solicitud</p>
+                <p>No se pudo realizar la solicitud, hay campos vacios</p>
             </div>  
         </div>
     </body>

@@ -10,9 +10,9 @@ spring:
         hibernate:
             ddl-auto: none
     datasource:
-        #driver-class-name: org.postgresql.Driver
-        driver-class-name: com.mysql.cj.jdbc.Driver
-        #url: jdbc:postgresql://localhost:5432/p_ventas
-        url: jdbc:mysql://localhost:3306/miempresa
-        username: Yonnier
-        password: The.love123
+        driver-class-name: org.postgresql.Driver
+        #driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:postgresql://ec2-52-7-228-45.compute-1.amazonaws.com/d1e3e8ln4j4kfn
+        #url: jdbc:mysql://localhost:3306/miempresa
+        username: lybyhyxfnddoke
+        password: fd55af35efa837dbed4e0f90fc0b62eabc5805dc459f78574e4e95e3c59b75bc
