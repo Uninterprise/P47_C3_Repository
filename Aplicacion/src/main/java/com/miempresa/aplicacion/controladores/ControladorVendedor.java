@@ -44,30 +44,38 @@ public class ControladorVendedor {
 
     @PostMapping("/crear/vendedor")
     public RedirectView procesarVendedor(@ModelAttribute Vendedor vendedor) {
-        Vendedor vendedorGuardado = repositorioVendedor.save(vendedor);
-        if (vendedorGuardado == null) {
-            return new RedirectView("/crear/vendedor/", true);
+        try {
+
+            Vendedor vendedorGuardado = repositorioVendedor.save(vendedor);
+            if (vendedorGuardado == null) {
+                return new RedirectView("/crear/vendedor#Error", true);
+            }
+            return new RedirectView("/vendedores#miModal", true);
+        } catch (Exception e) {
+            return new RedirectView("/crear/vendedor#Error");
         }
-//     return new RedirectView("/vendedores", true);
-        return new RedirectView("/vendedores", true);
     }
 
     @GetMapping("/editarVend/{codVendedor}")
     public String editarVendedor(Model model, @PathVariable String codVendedor) {
-        Vendedor vendedores = repositorioVendedor.findByCodVendedor(codVendedor);
-        repositorioVendedor.save(vendedores);
-        model.addAttribute("vendedor", vendedores);
-        return "vistaCrearVendedor";
+        try {
+            Vendedor vendedores = repositorioVendedor.findByCodVendedor(codVendedor);
+            repositorioVendedor.save(vendedores);
+            model.addAttribute("vendedor", vendedores);
+            return "vistaCrearVendedor";
+        } catch (Exception e) {
+            return "redirect:/vendedores#Error";
+        }
     }
 
     @GetMapping("/eliminar/{codVendedor}")
     public String eliminarVendedor(Model model, @PathVariable String codVendedor) {
         try {
             repositorioVendedor.deleteById(codVendedor);
+            return "redirect:/vendedores#miModal";
         } catch (Exception e) {
-            System.out.println(e.toString());
+            return "redirect:/vendedores#Error";
         }
-        return "redirect:/vendedores";
     }
 
 }

@@ -51,46 +51,62 @@ public class ControladorFactura {
 
     @GetMapping("/crear/factura") //path del controlador
     public String crearFactura(Model model) {
+        try {
+            Iterable<Vendedor> vendedores = repositorioVendedor.findAll();
+            model.addAttribute("vendedores", vendedores);
 
-        Iterable<Vendedor> vendedores = repositorioVendedor.findAll();
-        model.addAttribute("vendedores", vendedores);
+            Iterable<Producto> productos = repositorioProducto.findAll();
+            model.addAttribute("productos", productos);
 
-        Iterable<Producto> productos = repositorioProducto.findAll();
-        model.addAttribute("productos", productos);
+            Factura fact = new Factura();
+            model.addAttribute("factura", fact);
 
-        Factura fact = new Factura();
-        model.addAttribute("factura", fact);
+            return "vistaCrearFactura";
 
-        return "vistaCrearFactura";
+        } catch (Exception e) {
+            return "redirect:/facturas#Error";
+
+        }
+
     }
 
     @PostMapping("/crear/factura")
     public RedirectView procesarFatura(@ModelAttribute Factura factura) {
 
-        Factura facturaGuardada = repositorioFactura.save(factura);
-        if (facturaGuardada == null) {
-            return new RedirectView("/crear/factura/", true);
-        }
-        return new RedirectView("/facturas", true);
+        try {
+            Factura facturaGuardada = repositorioFactura.save(factura);
+            if (facturaGuardada == null) {
+                return new RedirectView("/crear/factura#Error", true);
+            }
+            return new RedirectView("/facturas#miModal", true);
 
+        } catch (Exception e) {
+            return new RedirectView("/crear/factura#Error");
+
+        }
     }
 
     @GetMapping("/editarFact/{numeroFactura}")
     public String editarFactura(@PathVariable String numeroFactura, Model model) {
+        try {
 
-        Factura facturaSeleccionado = repositorioFactura.findByNumeroFactura(numeroFactura);
-        System.out.println(" " + numeroFactura);
+            Factura facturaSeleccionado = repositorioFactura.findByNumeroFactura(numeroFactura);
+            System.out.println(" " + numeroFactura);
 
-        model.addAttribute("factura", facturaSeleccionado);
+            model.addAttribute("factura", facturaSeleccionado);
 
-        System.out.println("fa " + facturaSeleccionado.getIdVenta() + " " + facturaSeleccionado.getNumeroFactura());
-        Iterable<Vendedor> vendedores = repositorioVendedor.findAll();
-        model.addAttribute("vendedores", vendedores);
+            System.out.println("fa " + facturaSeleccionado.getIdVenta() + " " + facturaSeleccionado.getNumeroFactura());
+            Iterable<Vendedor> vendedores = repositorioVendedor.findAll();
+            model.addAttribute("vendedores", vendedores);
 
-        Iterable<Producto> productos = repositorioProducto.findAll();
-        model.addAttribute("productos", productos);
-        //System.out.println("id "+facturaSeleccionado.getIdVenta());
-        return "vistaCrearFactura";
+            Iterable<Producto> productos = repositorioProducto.findAll();
+            model.addAttribute("productos", productos);
+            //System.out.println("id "+facturaSeleccionado.getIdVenta());
+            return "vistaCrearFactura";
+        } catch (Exception e) {
+            return "redirect:/facturas#Error";
+
+        }
     }
 
     @GetMapping("/eliminarFact/{idVenta}")

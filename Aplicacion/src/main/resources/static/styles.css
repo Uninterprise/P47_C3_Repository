@@ -15,7 +15,7 @@ body {
     font-weight: 700;
     line-height: 2;
     color: #ffffff;
-    background-image: url(/azul.jpg);
+    background-image: url(/Imagen/Inicio-Background.jpg);
     background-size: cover;
 }
 
@@ -61,7 +61,7 @@ h4 {
 }
 
 .centrar-texto {
-    text-align: center;
+    text-align: left;
 }
 
 .d-block {

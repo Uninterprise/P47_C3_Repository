@@ -5,33 +5,26 @@
     <head>
         <title>Listado Facturas</title>
         <meta charset="UTF-8"> </meta>
-        <title>Listado Facturas</title>
-        <link rel="stylesheet" , href="styles.css">
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="stylesGlobal.css"/>
+        <link rel="stylesheet"  href="stylesVistaGlobal.css"/>
 
     </head>
-    <a href="/bienvenido" style="text-decoration: none; color: #fff; font-size: 20px;">Home</a>
-    <a href="/crear/factura" style="text-decoration: none; color: #fff; font-size: 20px;">Nuevo</a>
+    <!--a href="/bienvenido" style="text-decoration: none; color: #fff; font-size: 20px;">Home</a>
+    <a href="/crear/factura" style="text-decoration: none; color: #fff; font-size: 20px;">Nuevo</a-->
 
     <body>
-        <!--<table>
-                <caption>Lista de Facturas</caption>
-                <tr>
-                    <th> No.Fac   </th>
-                    <th> Cod.Prod </th>
-                    <th> Fecha    </th>
-                    <th> Cod.Vend </th>
-                </tr>            
-                <tr th:each="factura: ${facturas}">
-                    <td th:text="${factura.numeroFactura}" />
-                    <td th:text="${factura.producto.codProducto}" />
-                    <td th:text="${factura.fechaVenta}" />
-                    <td th:text="${factura.vendedor.codVendedor}" />
-                </tr>
-            </table>-->
-        <div class="container mt-4">
-            <h2 style="color: #ffffff; font-size: 30px;">Lista de Facturas</h2>
-            <table class="table" style="color: #ffffff; font-size: 15px;">
+        <div class="contenido-Btn">
+            <a href="/bienvenido" class="topBtn home" ><img src="/Imagen/icon-Home.png" alt="Home"/></a>
+            <a href="/productos" class="topBtn productos" >Productos</a>
+            <a href="/vendedores" class="topBtn vendedores" >Vendedores</a>
+            <a href="/facturas" class="topBtn facturas" >Facturas</a>
+        </div>
+
+        <div class="container-lista">
+            <h2>LISTA DE FACTURAS</h2>
+            <a href="/crear/factura" class="btn btn-nuevo"><h6>+ Nueva factura</h6></a>
+
+            <table class="table">
                 <thead>
                     <tr>
                         <th>ID </th>
@@ -49,13 +42,28 @@
                         <td th:text="${factura.producto.codProducto}"></td>
                         <td th:text="${factura.fechaVenta}"></td>
                         <td th:text="${factura.vendedor.codVendedor}"></td>
-                        <td>
-                            <a th:href="@{/editarFact/}+${factura.numeroFactura}" class="btn btn-warning">Editar</a>
-                            <a style="color: #000000" class="btn btn-danger" th:href="@{/eliminarFact/}+${factura.idVenta}"  th:object="${factura}"><h5>Eliminar</h5></a>
+                        <td class="boton-acciones">
+                            <a th:href="@{/editarFact/}+${factura.numeroFactura}" class="btn btn-opc">Editar</a>
+                            <a class="btn btn-opc" th:href="@{/eliminarFact/}+${factura.idVenta}"  th:object="${factura}">Eliminar</a>
                         </td>
                     </tr>
                 </tbody>
             </table>
+        </div>
+          <div id="miModal" class="modal">
+            <div class="modal-contenido">
+                <a href="#">X</a>
+                <h2>Goog job!</h2>
+                <p>Solicitud realizada con exito</p>
+            </div>  
+        </div>
+        
+        <div id="Error" class="modal">
+            <div class="modal-contenido error">
+                <a href="#">X</a>
+                <h2>ERROR</h2>
+                <p>No se pudo realizar la solicitud</p>
+            </div>  
         </div>
     </body>
 

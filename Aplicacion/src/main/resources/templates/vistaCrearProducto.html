@@ -1,37 +1,55 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
     <head>
-
-        <title >Crear producto</title>
         <meta charset="UTF-8"> </meta>
 
-        <link rel="stylesheet"  href="/styles.css" />
-
+        <title >Crear producto</title>
+        <link rel="stylesheet" type="text/css" href="/stylesGlobal.css"/>
+        <link rel="stylesheet" type="text/css" href="/stylesCrearGlobal.css"/>
     </head>
 
     <body>
-        <button type="submit" class="boton boton-azul d-block"><a href="/bienvenido">Home</a></button>
-        <button type="submit" class="boton boton-azul d-block"><a href="/productos">Productos</a></button>
-
-        <main>
-            <h4 style="text-align: center;">Forma para creación de Productos</h4> 
+        <main>    
+            <div class="contenido-Btn">
+                <a href="/bienvenido" class="topBtn home" ><img src="/Imagen/icon-Home.png" alt="Home"/></a>
+                <a href="/productos" class="topBtn productos" >Productos</a>
+                <a href="/vendedores" class="topBtn vendedores" >Vendedores</a>
+                <a href="/facturas" class="topBtn facturas" >Facturas</a>
+            </div>
+            <h2>CREAR PRODUCTO</h2> 
             <form th:action="@{/crear/producto}" th:object="${producto}" method="post">
-                <fieldset style="text-align: center;">
+                <fieldset>
                     <label> Código del Producto </label>
                     <input id="codigoproducto" type="text" th:field="*{codProducto}" />
                     <label> Nombre del Producto </label>
-                    <input id="nombreproducto" type="text" th:field="*{nombreProducto}" /> <br/><br/>
+                    <input id="nombreproducto" type="text" th:field="*{nombreProducto}" />
                     <label> Descripción Producto</label>
                     <input id="descripcionproducto" type="text" th:field="*{descripcionProducto}" />
                     <label> Precio del Producto ($)</label>
                     <input id="precioproducto" type="text" th:field="*{precioProducto}" />
-                    <br/> <br/>
-                    <button type="submit" class="boton boton-verde">Agregar Producto</button>
+                    <button type="submit" class="boton boton-submit">Agregar Producto</button>
+
                 </fieldset>
+
             </form>
         </main>
+          <div id="miModal" class="modal">
+            <div class="modal-contenido">
+                <a href="#">X</a>
+                <h2>Goog job!</h2>
+                <p>Solicitud realizada con exito</p>
+            </div>  
+        </div>
+        
+        <div id="Error" class="modal">
+            <div class="modal-contenido error">
+                <a href="#">X</a>
+                <h2>ERROR</h2>
+                <p>No se pudo realizar la solicitud, hay campos vacios</p>
+            </div>  
+        </div>
     </body>
 
 </html>

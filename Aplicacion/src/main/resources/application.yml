@@ -14,5 +14,5 @@ spring:
         driver-class-name: com.mysql.cj.jdbc.Driver
         #url: jdbc:postgresql://localhost:5432/p_ventas
         url: jdbc:mysql://localhost:3306/miempresa
-        username: root
-        password: Adminxx12345
+        username: Yonnier
+        password: The.love123
